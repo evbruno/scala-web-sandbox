@@ -1,6 +1,6 @@
 # Vagrant
 
-Tries to mimic a tiny/micro server to deploy our application.
+:computer: Tries to mimic a tiny/micro server to deploy our application.
 
 ```bash
 # booting up
