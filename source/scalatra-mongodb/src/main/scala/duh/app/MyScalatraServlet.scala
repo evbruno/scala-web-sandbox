@@ -19,8 +19,13 @@ class MyScalatraServlet extends ScalatramongodbStack with JacksonJsonSupport {
     </html>
   }
 
+  import org.slf4j.{Logger, LoggerFactory}
+  val logger =  LoggerFactory.getLogger(getClass)
+
   get("/echo/?:what?") {
-    assert (Account.count >= 0)
+    assert(Account.count >= 0)
+
+    logger.info("Total accounts {}", Account.count)
     
     val what = params.getOrElse("what", "void")
     <p>Echoing { what }!</p>

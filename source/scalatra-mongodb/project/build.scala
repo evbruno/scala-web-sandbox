@@ -32,7 +32,6 @@ object ScalatramongodbBuild extends Build {
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
         "org.eclipse.jetty" % "jetty-webapp" % JettyWebappVersion % "container;compile",
         "org.eclipse.jetty" % "jetty-plus" % JettyWebappVersion % "container",
         "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar")),
@@ -42,7 +41,9 @@ object ScalatramongodbBuild extends Build {
         "org.json4s"   %% "json4s-jackson" % "3.2.9",
         
         // MongoDB
-        "org.mongodb" %% "casbah" % CasbahMongoDBVersion
+        "org.mongodb" %% "casbah" % CasbahMongoDBVersion,
+        
+        "ch.qos.logback" % "logback-classic" % "1.1.1"
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
