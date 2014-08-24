@@ -1,9 +1,12 @@
 import sbt._
+
 import Keys._
 import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
+import sbtassembly.Plugin._
+import sbtassembly.Plugin.AssemblyKeys._
 
 object ScalatramongodbBuild extends Build {
   val Organization = "duh.scalatra"
@@ -12,11 +15,14 @@ object ScalatramongodbBuild extends Build {
   val ScalaVersion = "2.11.1"
   val ScalatraVersion = "2.3.0"
   val CasbahMongoDBVersion = "2.7.3"
+  val JettyWebappVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
     "scalatra-mongodb",
     file("."),
-    settings = ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ assemblySettings ++ Seq(
+      mainClass in assembly := Some("duh.app.JettyLauncher"),
+      jarName in assembly := "ScalatraSandbox.jar",
       organization := Organization,
       name := Name,
       version := Version,
@@ -27,8 +33,8 @@ object ScalatramongodbBuild extends Build {
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "9.1.3.v20140225" % "container",
-        "org.eclipse.jetty" % "jetty-plus" % "9.1.3.v20140225" % "container",
+        "org.eclipse.jetty" % "jetty-webapp" % JettyWebappVersion % "container;compile",
+        "org.eclipse.jetty" % "jetty-plus" % JettyWebappVersion % "container",
         "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar")),
         
         // json related libs
