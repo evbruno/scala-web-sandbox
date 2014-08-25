@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#^syntax detection
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'htop'
+cookbook 'mongodb'
+cookbook 'java', '~> 1.27.0'
+cookbook 'mysqld', '~> 0.3.0'

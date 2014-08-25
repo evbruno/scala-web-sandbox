@@ -37,11 +37,11 @@ class MyScalatraServlet extends ScalatramongodbStack with JacksonJsonSupport {
 
   // Before every action runs, set the content type to be in JSON format.
   //  before() {
-  //    contentType = formats("json")
-  //  }
+  //	contentType = formats("json")
+  // }
 
   get("/accounts") {
-    s"Stored Accounts: ${Account.count}"
+   s"Stored Accounts: ${Account.count}"
   }
   
   post("/accounts") {

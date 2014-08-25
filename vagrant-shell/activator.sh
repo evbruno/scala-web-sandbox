@@ -1,3 +1,11 @@
+# verify if the activator exists AND its on the $PATH
+
+if hash activator 2>/dev/null; then
+	echo "### activator found"
+	activator --version
+	exit 1
+fi
+
 cd /home/vagrant/
 echo "### Current directory: $(pwd)"
 echo "### Downloading Typesafe Activator 1.2.7 !"

@@ -1,0 +1,44 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.provider "virtualbox" do |v|
+    # v.gui = true
+    v.name = 'centos65-chef'
+    v.memory = 512
+    v.cpus = 1
+  end
+
+  # CentOS 6.5 x64 + Chef + VirtualBox and VMware https://github.com/INSANEWORKS/centos-packer
+  config.vm.box = "insaneworks/centos"
+  
+  # http
+  config.vm.network :forwarded_port, host: 9999, guest: 8080
+
+  config.vm.synced_folder "../source/", "/home/vagrant/app"
+
+  config.vm.provision :shell, inline: 'echo "Hello Chef (="'
+  config.vm.provision "chef_solo" do |chef|
+
+    chef.custom_config_path = "Vagrantfile.chef"
+
+    chef.add_recipe "htop"
+    chef.add_recipe "mongodb"
+    #chef.add_recipe "mysqld"
+    chef.add_recipe "java"
+
+    chef.json = { 
+      "java" => { 
+        "install_flavor" => "oracle", 
+        "jdk_version" => "7",
+        "oracle" => { "accept_oracle_download_terms" => true }
+      }
+    }
+
+  end
+
+end

@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/app":{"guestpath":"/home/vagrant/app","hostpath":"/Users/duh/Documents/Source/scala-web-sandbox/source","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/duh/Documents/Source/scala-web-sandbox/vagrant","disabled":false}}}

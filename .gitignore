@@ -17,7 +17,9 @@ project/plugins/project/
 .worksheet
 
 # Vagrant
-vagrant/.vagrant
+.vagrant
+cookbooks/
+tmp/
 
 # OSx
 .DS_Store

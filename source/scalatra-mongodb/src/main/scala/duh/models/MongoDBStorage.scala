@@ -12,8 +12,6 @@ object MongoDBStorage {
   def count = accounts.find.size
 
   def create(key: String, descritpion: String) = {
-    val t: Tuple2[String, String] = "key" -> "oi"
-
     val tuple = MongoDBObject(
       "key" -> key,
       "description" -> descritpion)
