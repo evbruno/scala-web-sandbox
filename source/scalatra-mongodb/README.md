@@ -29,6 +29,6 @@ $ java -jar target/scala-2.11/ScalatraSandbox.jar.jar
 val ScalaVersion = "2.11.1"
 val ScalatraVersion = "2.3.0"
 val CasbahMongoDBVersion = "2.7.3"
-val JettyWebappVersion = "9.1.3.v20140225
+val JettyWebappVersion = "9.1.3.v20140225"
 
 ```
